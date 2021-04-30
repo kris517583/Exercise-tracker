@@ -1,59 +1,88 @@
-* {
+*
+{
   box-sizing: border-box;
 }
 
-body {
-  font-family:sans-serif;
-  margin: 25px;
-  color: #222;
-  background-color: #f5f5f5;
+body
+{
+  font-family: "Open Sans", sans-serif;
+  margin:0;
+  background: url('bg.jpg') no-repeat;
+  background-size: cover;
 }
 
-h1 {
+.navbar-brand
+{
+  font-size: 35px !important;
+  text-transform: uppercase;
+  padding-bottom: 20px;
+}
+
+main .container
+{
+  margin-top: 50px;
+  margin-bottom: 50px;
+  max-width: 540px;
+  background: rgb(31 66 72 / 80%);
+  border-radius: 10px;
+  padding: 20px;
+}
+
+.btn-group button
+{
+  font-size: 20px;
+  font-weight: 500;
+  background: teal !important;
+  border: 1px solid #62ccdd !important;
+}
+
+.btn-group .active
+{
+  background: dimgrey !important;
+  border : 1px solid dimgrey !important;
+  cursor: default !important;
+}
+.btn-group button:nth-of-type(odd) 
+{
+    border-right: 3px solid #62ccdd !important;
+}
+.btn-group button:nth-of-type(even) 
+{
+  margin-left: 0px;
+}
+.form-container
+{
+  display: none;
+}
+.frm-group .active
+{
+  display: block !important;
+}
+
+.form-container legend
+{
+  font-weight: 500
+}
+
+.form-group
+{
+  padding-left: 12px;
+}
+.form-group label
+{
   font-weight: bold;
-  
+  font-size: 20px;
 }
 
-p {
-  max-width: 900px;
+.btn-outline-dark
+{
+  border: 1px solid #62ccdd !important;
+  color: #62ccdd !important;
+  font-weight: 500 !important;
 }
 
-form {
-  margin-bottom: 25px;
-  padding: 15px;
-  background-color: #87D37C;
-  display: inline-block;
-  width: 100%;
-  max-width: 340px;
-  border-radius: 5px;
-}
-
-input {
-  display: block;
-  margin-bottom: 10px;
-  padding: 5px;
-  width: 100%;
-  border: 1px solid lightgrey;
-  border-radius: 3px;
-  font-size: 16px;
-}
-
-input[type=submit],input[type=button] {
-  font-size: 16px;
-  border-radius: 3px;
-  background-color: #E4F1FE;
-  border: 1px solid grey;
-  box-shadow: 2px 2px #999;
-  cursor: pointer;
-}
-
-input[type=submit]:hover,input[type=button]:hover {
-  background-color: #FFFEC4;
-}
-
-code {
-  font-family: monospace;
-  font-size: 1.2em;
-  background-color: #FFFEC4;
-  padding: 2px;
+.btn-outline-dark:hover
+{
+  color:white !important;
+  background: teal !important;
 }

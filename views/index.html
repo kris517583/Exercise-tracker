@@ -1,37 +1,80 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>Exercise Tracker | freeCodeCamp</title>
-    <link rel="shortcut icon" href="https://cdn.freecodecamp.org/universal/favicons/favicon-32x32.png" type="image/x-icon"/>
-    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet" type="text/css">
-    <link href="style.css" rel="stylesheet" type="text/css">
-  </head>
+<head>
+  <title>Excercise Tracker</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="favico.png" rel="icon">
+  <link href="logo192.png" rel="apple-touch-icon">
+  <link href="style.css" rel="stylesheet" type="text/css" />
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</head>
 
-  <body>
-    <div class="container">
-      <h1>Exercise tracker</h1>
-      <form action="/api/users" method="post">
-        <h3>Create a New User</h3>
-        <p><code>POST /api/users</code></p>
-        <input id="uname" type="text" name="username" placeholder="username" required="">
-        <input type="submit" value="Submit">
-      </form>
-      <form id="exercise-form" method="post">
-        <h3>Add exercises</h3>
-        <p><code>POST /api/users/:_id/exercises</code></p>
-        <input id="uid" type="text" name=":_id" placeholder=":_id" required="">
-        <input id="desc" type="text" name="description" placeholder="description*" required="">
-        <input id="dur" type="text" name="duration" placeholder="duration* (mins.)" required="">
-        <input id="dat" type="text" name="date" placeholder="date (yyyy-mm-dd)">
-        <input type="button" value="Submit" onclick="validate()">
-      </form>
-      <p>
-        <strong>GET user's exercise log: </strong>
-        <code>GET /api/users/:_id/logs?[&amp;from][&amp;to][&amp;limit]</code>
-      </p>
-      <p><strong>[ ]</strong> = optional</p>
-      <p><strong>from, to</strong> = dates (yyyy-mm-dd); <strong>limit</strong> = number</p>
+<body>
+<div class="container">
+<nav class="navbar navbar-expand-sm justify-content-center">
+ <h1 class="navbar-brand text-white m-0">Exercise tracker</h1>
+</nav>
+<main>
+<section class="container" style="margin-top:50px;margin-bottom:50px;max-width:540px;border:1px solid #62ccdd !important">
+<div class="btn-group w-100">
+  <button type="button" class="btn btn-primary active" onclick="changefrm(this)">New Registration</button>
+  <button type="button" class="btn btn-primary" onclick="changefrm(this)">Add Excercise</button>
+</div>
+<div class="frm-group">
+  <form action="/api/users" class="form-container active" method="post">
+    <legend class="text-center py-2 px-4 text-white">Create a New User</legend>
+    <p class="text-center"><code class="text-white">POST /api/users</code></p>
+    <fieldset style="margin-top:30px">
+    <div class="form-group">
+    <label for="username" class="text-white">Username</label>
+    <input id="uname" class="form-control"  type="text" name="username" placeholder="Enter Username" required="">
+    <div class="text-center mr-3"><input type="submit" class="btn btn-outline-dark mt-3 mb-2" value="POST URL" /></div>
     </div>
+    </fieldset>
+  </form>
+
+
+  <form id="exercise-form" class="form-container" method="post">
+    <legend class="text-center py-2 px-4 text-white">Add exercises</legend>
+    <p class="text-center"><code class="text-white">POST /api/users/:_id/exercises</code></p>
+    <fieldset style="margin-top:30px">
+    <div class="form-group">
+    <label for="username" class="text-white">Id</label>
+    <input id="uid" type="text" class="form-control" name=":_id" placeholder=":_id" required="">
+    <label for="username" class="text-white">Description</label>
+    <input id="desc" type="text" class="form-control" name="description" placeholder="description*" required="">
+    <label for="username" class="text-white">Duration</label>
+    <input id="dur" type="text" class="form-control" name="duration" placeholder="duration* (mins.)" required="">
+    <label for="username" class="text-white">Date</label>
+    <input id="dat" type="text" class="form-control" name="date" placeholder="date (yyyy-mm-dd)">
+    <div class="text-center mr-3">
+    <input type="button" class="btn btn-outline-dark mt-3 mb-2" value="Submit" onclick="validate()">
+    </div>
+    </div>
+    </fieldset>
+  </form>
+</div>
+</section>
+<div class="text-center text-white" style="margin-bottom:50px; margin-top:30px">
+  <p>
+    <strong>GET user's exercise log: </strong>
+    <code class="text-white">GET /api/users/:_id/logs?[&amp;from][&amp;to][&amp;limit]</code>
+  </p>
+  <p><strong>[ ]</strong> = optional</p>
+  <p><strong>from, to</strong> = dates (yyyy-mm-dd); <strong>limit</strong> = number</p>
+</div>
+</main>
+</div>
+<footer class="text-center text-lg-start" style="background-color: rgb(84 91 98 / 60%)">
+    <div class="text-center p-3 text-white">
+    <strong>©Copyright:</strong>
+    <a class="text-white " role="button">Rolecall</a>
+  </div>
+</footer>
     <script>
       const exerciseForm = document.getElementById("exercise-form");
 
@@ -77,6 +120,17 @@
         {
           exerciseForm.reportValidity();
         }  
+      }
+
+      function changefrm(e)
+      {
+        if(!e.classList.contains("active"))
+        {
+        document.getElementsByClassName('btn-primary')[0].classList.toggle("active")
+        document.getElementsByClassName('btn-primary')[1].classList.toggle("active")
+        document.getElementsByClassName('form-container')[0].classList.toggle("active")
+        document.getElementsByClassName('form-container')[1].classList.toggle("active")
+        }
       }
     </script>
   </body>
