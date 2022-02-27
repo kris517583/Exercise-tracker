@@ -19,7 +19,7 @@ app.post('/api/users/slack', urlencodedParser, async function(req, res)
 {
 	console.log(req.body)
 	res.send(req.body.challenge)
-}
+});
 app.post('/api/users', urlencodedParser, async function(req, res)
 {
 	console.log("post  : "+'/api/users')
