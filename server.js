@@ -16,7 +16,7 @@ app.get('/', (req, res) =>
 {
   res.sendFile(__dirname + '/views/index.html')
 });
-app.post('/api/users/slack', urlencodedParser, async function(req, res)
+app.post('/slack/general', urlencodedParser, async function(req, res)
 {
 	console.log(req.body)
 	res.json({"message":"Hello Iam Dolores"})
