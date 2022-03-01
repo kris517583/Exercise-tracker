@@ -19,7 +19,7 @@ app.get('/', (req, res) =>
 app.post('/api/users/slack', urlencodedParser, async function(req, res)
 {
 	console.log(req.body)
-	res.send(req.body.challenge)
+	res.json({"message":"Hello Iam Dolores"})
 });
 app.post('/api/users', urlencodedParser, async function(req, res)
 {
